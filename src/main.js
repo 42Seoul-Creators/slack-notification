@@ -5,7 +5,7 @@ const run = () => {
   const notificationMessage = buildMessage();
 
   console.log(notificationMessage);
-  // createGithubIssue(notificationMessage);
+  createGithubIssue(notificationMessage);
 };
 
 run();
