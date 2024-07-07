@@ -2,7 +2,7 @@ name: slack-bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: "00 22 * * 1" # Every Mondy AM 07:00 KST(UTC+09:00)
+    - cron: "00 22 * * 0" # Every Mondy AM 07:00 KST(UTC+09:00)
 
 jobs:
   send-slack-message:
