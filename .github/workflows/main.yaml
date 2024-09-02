@@ -21,8 +21,8 @@ jobs:
         id: node-cache
         uses: actions/cache@v4
         with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
@@ -35,5 +35,7 @@ jobs:
         env:
           OWNER: ${{ secrets.OWNER }}
           REPO: ${{ secrets.REPO }}
-          TOKEN: ${{ secrets.TOKEN }}
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_INSTALLATION_ID: ${{ secrets.APP_INSTALLATION_ID }}
+          APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
         run: node src/main.js
