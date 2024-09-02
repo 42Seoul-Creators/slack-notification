@@ -5,21 +5,20 @@ import env from "./env.js";
 import { getFormatTodayDate, getWeek } from "./date.js";
 import logger from "./logger.js";
 
-const appOctokit = new Octokit({
-  authStrategy: createAppAuth,
-  auth: {
-    appId: env.github.appId,
-    privateKey: env.github.privateKey,
-    installationId: env.github.installationId,
-  },
-});
-
 const year = getFormatTodayDate("YYYY년");
 const month = getFormatTodayDate("MM월");
 
 export const createGithubIssue = async (nofiticationMessage) => {
   try {
     const { owner, repo } = env.github;
+    const appOctokit = new Octokit({
+      authStrategy: createAppAuth,
+      auth: {
+        appId: env.github.appId,
+        privateKey: env.github.privateKey,
+        installationId: env.github.installationId,
+      },
+    });
 
     const response = await appOctokit.issues.create({
       owner,
